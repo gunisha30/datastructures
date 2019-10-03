@@ -1,2 +1,2 @@
 # datastructures
-Important DS questions
+This repository contains important DS codes.
