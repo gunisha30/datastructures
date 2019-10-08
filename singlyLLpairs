@@ -1,0 +1,30 @@
+Q:
+Given two linked lists, find the number of node pairs whose sum is equal to a value X.
+Solu:
+struct Node
+{
+   int data;
+   struct Node* next;
+};
+
+ int countPairs(struct Node* head1, struct Node* head2,	int x)
+{
+   struct Node *tmp1=head1;
+   struct Node *tmp2=head2;
+   int count=0;
+   while(tmp1!=NULL)
+   {
+       while(tmp2!=NULL)
+       {
+           if((tmp1->data)+(tmp2->data)==x)
+           {
+               count++;
+           }
+           tmp2=tmp2->next;
+       }
+   tmp2=head2;
+   tmp1=tmp1->next;    
+   }
+
+    return count;
+}
