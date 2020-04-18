@@ -1,36 +1,45 @@
 #include <iostream>
 using namespace std;
-#define null 0 
-struct node
+#define NULL 0 
+struct bst
 {
-    int data;
+int data;
 node *left, *right;
-}*root;
+};
+bst *root;
 
 void createbst()
 {
-    root=null;
-    root->left=null;
-    root->right=null;
+    root=NULL;
 }
 
-void insert(int a)
+bst* insert(int a, bst *ptr)
 {
-  if(root==null)
+  if(ptr==null)
   {
-      node *new_node=new node();
+  bst *new_node=new bst();
   new_node->data=a;
-  root=new_node;
-      
+  new_node->left=NULL;
+  new_node->right=NULL;
+  ptr=new_node;
   }
   else
   {
-      if(a)
+      if(a>ptr->data)
+      insert(a, ptr->right);
+      else
+      insert(a, ptr->left);
   }
+return ptr;
 }
 
 int main() {
 	createbst();
-	insert(10);
+	root=insert(5, root);
+	root=insert(4, root);
+	root=insert(10,root);
+        root=insert(3, root);
+	root=insert(2, root);
+	root=insert(11, root);
 	return 0;
 }
