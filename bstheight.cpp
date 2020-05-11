@@ -29,16 +29,22 @@ BstNode* Insert(BstNode* root,int data) {
 	return root;
 }
 
-int getheight(BstNode* root, int key)
+int getheight(BstNode* root, int height, int key)
 {
-int height=0;
 if(root==NULL)
 return -1;
 
-if(root->data==key)
-return 0;
+else if(root->data==key)
+return height;
 
-getheight(root->left,height+1)
+else if(key < root->data)
+getheight(root->left,height+1,key);
+
+else if(key > root->data)
+getheight(root->right,height+1,key);
+
+else
+return -1;
 }
 
 int main() {
@@ -48,7 +54,7 @@ int main() {
 	root = Insert(root,10);
 	root = Insert(root,20);
 	root = Insert(root,9);
-	h=getheight(root,9);
+	h=getheight(root,0,9);
 	cout<<h;
 	return 0;
 }
